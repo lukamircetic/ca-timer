@@ -1,4 +1,4 @@
-package com.hesporitimer;
+package com.catimer;
 
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
