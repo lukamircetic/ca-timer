@@ -18,7 +18,6 @@ enum CABoss {
 //    SEREN(NpcID.FRAGMENT_OF_SEREN, ItemID.CRYSTAL_OF_TRAHAEARN);
 
     private static final Map<Integer, CABoss> bosses;
-    private CATimerConfig config;
     private final int id;
     private final int itemSpriteId;
 
