@@ -5,7 +5,7 @@ Adds countdown timers to non-raid bosses that have speedrun tasks.
 Currently supported bosses:
 * Hespori
 * Vorkath
-* Zulraj
+* Zulrah
 
 Coming Soon:
 * Hydra
