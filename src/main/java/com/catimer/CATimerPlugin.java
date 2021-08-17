@@ -48,23 +48,10 @@ public class CATimerPlugin extends Plugin
 	CATimerConfig provideConfig(ConfigManager configManager) {
 		return configManager.getConfig(CATimerConfig.class);
 	}
-//	@Override
-//	protected void startUp() throws Exception
-//	{
-//		log.info("Example started!");
-//	}
-//
-//	@Override
-//	protected void shutDown() throws Exception
-//	{
-//		log.info("Example stopped!");
-//	}
-
 
 	@Subscribe
 	public void onNpcSpawned(NpcSpawned npcSpawned)
 	{
-//		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Time for Hespori "+ config.hesporiTime().getTimes(), null);
 		NPC npc = npcSpawned.getNpc();
 		if (npc.isDead()) {
 			return;
@@ -74,10 +61,8 @@ public class CATimerPlugin extends Plugin
 		CABoss boss = CABoss.find(npcId);
 		if (boss == null)
 		{
-//			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Boss Could not be found {}"+npc.getName(), null);
 			return;
 		}
-
 		long configTime;
         switch (npcId) {
             case NpcID.HESPORI:
@@ -94,11 +79,7 @@ public class CATimerPlugin extends Plugin
 			Timer timer = new Timer(configTime, ChronoUnit.MILLIS, itemManager.getImage(boss.getItemSpriteId()), this);
 			timer.setTooltip(npc.getName());
 			infoBoxManager.addInfoBox(timer);
-		} else {
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Timer is off for "+npc.getName(), null);
-		}
-
-
+        }
 	}
 
 	// Vorkath case - will adjust as new bosses are added
@@ -122,13 +103,5 @@ public class CATimerPlugin extends Plugin
 			timer.setTooltip(npc.getName());
 			infoBoxManager.addInfoBox(timer);
 		}
-	}
-
-	@Subscribe
-	public void onAnimationChanged(AnimationChanged animationChanged) {
-		Actor ac = animationChanged.getActor();
-		String nam = ac.getName();
-		int inter = ac.getAnimation();
-		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Timer is off for "+nam + inter, null);
 	}
 }
