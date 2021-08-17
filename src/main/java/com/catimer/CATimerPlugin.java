@@ -23,9 +23,6 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.ui.overlay.infobox.Timer;
 
 
-
-
-
 @Slf4j
 @PluginDescriptor(
 	name = "CA Timers"
