@@ -3,6 +3,7 @@ package com.catimer;
 import com.catimer.config.HesporiTimes;
 import com.catimer.config.VorkathTimes;
 import com.catimer.config.ZulrahTimes;
+import com.catimer.config.HydraTimes;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -41,5 +42,16 @@ public interface CATimerConfig extends Config
 	default ZulrahTimes zulrahTime()
 	{
 		return ZulrahTimes.GRANDMASTER;
+	}
+
+	@ConfigItem(
+			position = 3,
+			keyName = "hydra",
+			name = "Hydra Timer",
+			description = "Select a kill time for the Hydra Speedrun Task"
+	)
+	default HydraTimes hydraTime()
+	{
+		return HydraTimes.GRANDMASTER;
 	}
 }

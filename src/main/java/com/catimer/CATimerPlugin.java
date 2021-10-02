@@ -6,7 +6,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 
-import com.catimer.config.VorkathTimes;
 import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +54,9 @@ public class CATimerPlugin extends Plugin
 		}
 
 		int npcId = npc.getId();
+//		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "HydraID " + npc.getName() + " " + npcId, null);
 		CABoss boss = CABoss.find(npcId);
+
 		if (boss == null)
 		{
 			return;
@@ -68,12 +69,19 @@ public class CATimerPlugin extends Plugin
             case NpcID.ZULRAH:
                 configTime = config.zulrahTime().getTime();
                 break;
+			case NpcID.ALCHEMICAL_HYDRA:
+				if (client.isInInstancedRegion()){
+					configTime = config.hydraTime().getTime();
+				} else {
+					configTime = 0;
+				}
+				break;
             default:
                 configTime = 0;
         }
-		infoBoxManager.removeIf(t -> t instanceof Timer);
+		infoBoxManager.removeIf(t -> t instanceof SpeedrunTimer && ((SpeedrunTimer) t).getBoss() == boss);
         if (configTime != 0) {
-			Timer timer = new Timer(configTime, ChronoUnit.MILLIS, itemManager.getImage(boss.getItemSpriteId()), this);
+			SpeedrunTimer timer = new SpeedrunTimer(boss, configTime, itemManager.getImage(boss.getItemSpriteId()), this);
 			timer.setTooltip(npc.getName());
 			infoBoxManager.addInfoBox(timer);
         }
@@ -94,9 +102,9 @@ public class CATimerPlugin extends Plugin
 			return;
 		}
 		long configTime = config.vorkathTime().getTime();
-		infoBoxManager.removeIf(t -> t instanceof Timer);
+		infoBoxManager.removeIf(t -> t instanceof SpeedrunTimer && ((SpeedrunTimer) t).getBoss() == boss);
 		if (Objects.equals(firstAction, "Attack") && configTime != 0) {
-			Timer timer = new Timer(configTime, ChronoUnit.MILLIS, itemManager.getImage(boss.getItemSpriteId()), this);
+			SpeedrunTimer timer = new SpeedrunTimer(boss, configTime, itemManager.getImage(boss.getItemSpriteId()), this);
 			timer.setTooltip(npc.getName());
 			infoBoxManager.addInfoBox(timer);
 		}
