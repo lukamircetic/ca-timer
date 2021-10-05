@@ -12,7 +12,7 @@ import java.util.List;
 enum CABoss {
     HESPORI(NpcID.HESPORI, ItemID.BOTTOMLESS_COMPOST_BUCKET),
     VORKATH(NpcID.VORKATH_8061, ItemID.VORKI),
-//    HYDRA(NpcID.ALCHEMICAL_HYDRA, ItemID.IKKLE_HYDRA),
+    HYDRA(NpcID.ALCHEMICAL_HYDRA, ItemID.IKKLE_HYDRA),
     ZULRAH(NpcID.ZULRAH, ItemID.PET_SNAKELING);
 //    GALVEK(NpcID.GALVEK, ChronoUnit.SECONDS, ItemID.MYTHICAL_CAPE),
 //    SEREN(NpcID.FRAGMENT_OF_SEREN, ItemID.CRYSTAL_OF_TRAHAEARN);
@@ -39,10 +39,6 @@ enum CABoss {
     public int getId() {
         return id;
     }
-
-//    public Duration getKillTime() {
-//        return killTime;
-//    }
 
     public int getItemSpriteId() {
         return itemSpriteId;
