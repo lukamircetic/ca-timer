@@ -54,7 +54,6 @@ public class CATimerPlugin extends Plugin
 		}
 
 		int npcId = npc.getId();
-//		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "HydraID " + npc.getName() + " " + npcId, null);
 		CABoss boss = CABoss.find(npcId);
 
 		if (boss == null)
